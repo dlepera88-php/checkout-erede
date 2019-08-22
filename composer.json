@@ -1,0 +1,29 @@
+{
+    "name": "dlepera88-php/checkout-erede",
+    "version": "1.0.0",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/dlepera88-php/checkout-dlx.git"
+        }
+    ],
+    "require": {
+        "dlepera88-php/checkout-dlx": "dev-master",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Erede\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Erede\\Tests\\": "tests"
+        }
+    }
+}
