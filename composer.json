@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "dlepera88-php/checkout-dlx": "dev-master",
+        "dlepera88-php/checkout-dlx": "1.0-alpha",
         "ext-curl": "*",
         "ext-json": "*"
     },
