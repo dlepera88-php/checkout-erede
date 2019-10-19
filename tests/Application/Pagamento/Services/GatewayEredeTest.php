@@ -68,6 +68,16 @@ class GatewayEredeTest extends TestCase
     }
 
     /**
+     * @param GatewayErede $erede
+     * @covers ::getNomeServico
+     * @depends test__construct
+     */
+    public function test_GetNomeServico_deve_retornar_o_valor_da_constante_NOME_SERVICO(GatewayErede $erede)
+    {
+        $this->assertEquals($erede::NOME_SERVICO, $erede->getNomeServico());
+    }
+
+    /**
      * @covers ::autorizar
      * @depends test__construct
      * @param GatewayErede $erede

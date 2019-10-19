@@ -46,6 +46,8 @@ use stdClass;
  */
 class GatewayErede implements GatewayPagamentoInterface
 {
+    const NOME_SERVICO = 'e.Rede';
+
     /**
      * @var int
      */
@@ -70,6 +72,14 @@ class GatewayErede implements GatewayPagamentoInterface
         $this->numero_afiliacao = $numero_afiliacao;
         $this->token = $token;
         $this->ambiente = $ambiente;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomeServico(): string
+    {
+        return self::NOME_SERVICO;
     }
 
     /**
