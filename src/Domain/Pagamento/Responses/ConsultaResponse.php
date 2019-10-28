@@ -25,8 +25,6 @@
 
 namespace Erede\Domain\Pagamento\Responses;
 
-
-use CheckoutDLX\Domain\Responses\ValueObjects\Cartao;
 use Exception;
 use stdClass;
 

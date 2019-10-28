@@ -95,7 +95,6 @@ class GatewayErede implements GatewayPagamentoInterface
             'kind' => $request->getTipoTransacao(),
             'reference' => $request->getReferencia(),
             'amount' => intval($request->getValor() * 100),
-            'installments' => $request->getParcelas(),
             'cardHolderName' => $request->getCartao()->getDonoCartao(),
             'cardNumber' => $request->getCartao()->getNumeroCartao(),
             'expirationMonth' => $request->getCartao()->getExpiracaoMes(),
@@ -106,6 +105,12 @@ class GatewayErede implements GatewayPagamentoInterface
             'origin' => 1, // e-Rede
             'distributorAffiliation' => $this->numero_afiliacao
         ];
+
+        // O parâmetro 'installments' (parcelas) não é permitido quando o parâmetro 'kind' (tipo de transação)
+        // for 'debit'. Apenas deve ser passado quando kind=credit
+        if ($request->getTipoTransacao() === 'credit') {
+            $params['installments'] = $request->getParcelas();
+        }
 
         $metodo = URL::AUTORIZACAO[$this->ambiente]['metodo'];
         $url = URL::AUTORIZACAO[$this->ambiente]['url'];

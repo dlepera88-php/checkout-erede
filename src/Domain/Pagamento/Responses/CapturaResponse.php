@@ -40,11 +40,16 @@ class CapturaResponse extends \CheckoutDLX\Domain\Responses\CapturaResponse
      */
     public static function createFormStd(stdClass $std_class): self
     {
-        $retorno = new Retorno($std_class->returnCode, $std_class->returnMessage);
+        // Em alguns casos, o retorno não é enviado por essa classe, pois o mesmo está relacionado a requisição
+        // e não a entidade em si
+        $returnCode = property_exists($std_class, 'returnCode') ? $std_class->returnCode : null;
+        $returnMessage = property_exists($std_class, 'returnMessage') ? $std_class->returnMessage : '';
+
+        $retorno = new Retorno($returnCode, $returnMessage);
 
         return new self(
-            $std_class->reference,
-            $std_class->tid,
+            $std_class->reference ?? null,
+            $std_class->tid ?? null,
             $std_class->nsu,
             new DateTime($std_class->dateTime),
             $retorno
